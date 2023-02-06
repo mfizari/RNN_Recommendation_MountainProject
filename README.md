@@ -12,9 +12,10 @@ I decided to use a recurrent neural network (RNN) approach for the basis of this
 
 #### Data
 
-The dataset was scraped from MountainProject in a previous [project](https://github.com/mfizari/MountainProject-Web-Scraper). The entire tick profile of each user was scraped, where each tick contains various descriptive variables of the route, as well as personalized notes, the date, and how the user did on the climb. The content in the formatted scraped data is shown below: <br/>
+The dataset was scraped from MountainProject in a previous [project](https://github.com/mfizari/MountainProject-Web-Scraper). The entire tick profile of each user was scraped, where each tick contains various descriptive variables of the route, as well as personalized notes, the date, and how the user did on the climb. The content in the formatted scraped data is shown below (transposed for clarity): <br/>
 
-[IMAGE]
+
+<img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/raw_example.png" width=40% height=40%>
 
 For each user, a list of ticks contains the following information for each tick:<br/>
 `route_id`: A unique id assigned to each route by MountainProject (found in the route’s URL).<br/>
@@ -30,13 +31,14 @@ NNs require numeric inputs, so non-numeric data had to be tokenized in pre-proce
 
 `rating_yds`:  All `rating_yds` values between 5.0 and 5.6 were grouped together under the value `Beginner` before tokenizing, to minimize the dictionary size. Slash, +-, and letter grades were removed, so that the possible values of `rating_yds` were `3rd, 4th, Easy 5th, Beginner, 5.7, 5.8` etc. <br/>
 
-`rating_vscale` and `rating_misc`: A similar thing was done with these features, removing all slash grades and consolidating the possible options, especially due to the diversity in `rating_misc` (over 700 unique ratings).<br/>.
+`rating_vscale` and `rating_misc`: A similar thing was done with these features, removing all slash grades and consolidating the possible options, especially due to the diversity in `rating_misc` (over 700 unique ratings).<br/>
 
-After this, the rating features, `rotuetype`, and `route_id` were tokenized and converted to sequences. Additionally, `ndays` was binned in bin sizes of 15 days. <br/>
+After this, the rating features, `rotuetype`, and `route_id` were tokenized and converted to sequences. Additionally, `ndays` was binned in bin sizes of 15 days. Finally, since the RNN model is doing sequence-to-sequence prediction, the target sequence of `route_id` was produced by one-shifting. An individual sample in the full pre-processed dataset looked like this:<br/>
 
-Finally, since the RNN model is doing sequence-to-sequence prediction, the target sequence of `route_id` was produced by one-shifting. An individual sample in the full pre-processed dataset looked like this:<br/>
 
-[IMAGE].<br/>
+
+
+<br/>
 
 #### Model<br/>
 To avoid the vanishing gradient problem that can occur when dealing with long sequence, LSTM layers should be used in an RNN model. However, training with LSTMs can be very computationally expensive. Here, I decided to use NVIDIA CUDA Deep Neural Network library (cuDNN), which contains an extremely optimized LSTM layer implementation for GPU-accelerated training (`tf.compat.v1.keras.layers.CuDNNLSTM` in TensorFlow). However, this implementation does not support masking, which together with padding would allow variable sequence lengths. As a result, I started off by choosing a fixed sequence length (`max_sen_len`) of 50 ticks and restricted the dataset to only include the last 50 ticks of users with at least 50 ticks in their profile. This number was chosen to minimize the amount of user profiles not included in the dataset while maximizing the time-span of which ticks are considered. <br/>
