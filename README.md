@@ -1,6 +1,6 @@
 # RNN_Recommendation_MountainProject
 
-### Problem statement
+### Background
 
 MountainProject is an online database of climbing areas and routes. Routes and areas are submitted by users and each page for a route contains descriptive information such as the route’s name, difficulty, length, type (trad, sport, boulder, etc), description, and location, as well as a section for users to comment on the route. Users can make an account and log the climbs they’ve done on a given day into their “ticks”. Users can also rate the quality of climbs on a 5-star scale. <br/>
 
@@ -60,3 +60,6 @@ Overall, the RNN models vastly outperform the baselines. Interestingly, adding t
 
 #### Future work
 Since masking is not allowed in the cuDNN implementation of LSTM layers, we must use a fixed sequence length for inferences. This means that we cannot make predictions for users with fewer ticks that `max_sen_len`. To overcome this, we could use our currently trained model to extrpolate "past" ticks to fill in the sequence. Additionally, since we expect there to be significant seasonality in tick logs, we might want to adjust the truncation method to capture `route_id` sequences that span a longer time period, or use a larger value of `max_sen_len`. The later could be accomplished again by extrpolating past ticks for users with our current model. 
+
+
+
