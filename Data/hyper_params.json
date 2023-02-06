@@ -1,0 +1,1 @@
+{"ntick_cutoff": 50, "batch_size": 32, "max_sen_len": 50, "binsize": 30, "nyears": 20}
