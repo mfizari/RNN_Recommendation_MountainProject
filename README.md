@@ -34,7 +34,7 @@ NNs require numeric inputs, so non-numeric data had to be tokenized in pre-proce
 
 After this, the rating features, `rotuetype`, and `route_id` were tokenized and converted to sequences. Additionally, `ndays` was binned in bin sizes of 15 days. <br/>
 
-Finally, since the RNN model is doing sequence-to-sequence prediction, the target sequence of `route_id` was produced by one-shifting. An individual sample in the full dataset looked like this:<br/>
+Finally, since the RNN model is doing sequence-to-sequence prediction, the target sequence of `route_id` was produced by one-shifting. An individual sample in the full pre-processed dataset looked like this:<br/>
 
 [IMAGE].<br/>
 
@@ -43,7 +43,7 @@ To avoid the vanishing gradient problem that can occur when dealing with long se
 
 The final architecture of the model is shown below:<br/>
 
-[IMAGE]. 
+<img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/Arc.png" width=50% height=50%>
 
 To asses the importance of the various features, 3 different models were trained on 90% of the training dataset, with 10% left for validation. These models included 3 sets of features: `route_id` only, `route_id` and `ndays`, and all features listed above. Training was done on Paperspace Gradient notebooks. <br/>
 
