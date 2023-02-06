@@ -12,7 +12,7 @@ I decided to use a recurrent neural network (RNN) approach for the basis of this
 
 #### Data
 
-The dataset was scraped from MountainProject in a previous [project](https://github.com/mfizari/MountainProject-Web-Scraper). The entire tick profile of each user was scraped, where each tick contains various descriptive variables of the route, as well as personalized notes, the date, and how the user did on the climb. The content in the formatted scraped data is shown below (transposed for clarity): <br/>
+The dataset was scraped from MountainProject in a previous [project](https://github.com/mfizari/MountainProject-Web-Scraper). The entire tick profile of each user was scraped, where each tick contains various descriptive variables of the route, as well as personalized notes, the date, and how the user did on the climb. The content in the formatted scraped data is shown below, for a single user (transposed for clarity): <br/>
 
 
 <img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/raw_example.png" width=40% height=40%>
