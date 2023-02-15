@@ -55,7 +55,7 @@ To asses the performance of the various models, accuracy and recall were calcula
 
 <img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/EvalMetrics_Acc_Prec.png" width=65% height=65%><br/>
 
-Overall, the RNN models vastly outperform the baselines. Interestingly, adding the `ndays` feature improved the final metrics compared to only using `route_id` as a feature, but the addition of all the other features only marginally improved the performance when `ndays` was already included. Addition of ‘ndays’ also significantly speed up the convergence time of the model during training (~100 epochs vs ~350 epochs). To minimize dataset sizes and processing times, it seems reasonable to only use these two features and still get high performance for inferences. <br/>
+Overall, the RNN models vastly outperform the baselines. Interestingly, adding the `ndays` feature improved the final metrics compared to only using `route_id` as a feature, but the addition of all the other features only marginally improved the performance when `ndays` was already included. Addition of `ndays` also significantly speed up the convergence time of the model during training (~100 epochs vs ~350 epochs). To minimize dataset sizes and processing times, it seems reasonable to only use these two features and still get high performance for inferences. <br/>
 
 
 #### Future work
