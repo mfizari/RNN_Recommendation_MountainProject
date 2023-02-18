@@ -51,7 +51,7 @@ To asses the importance of the various features, 3 different models were trained
 
 
 #### Evaluation<br/>
-To asses the performance of the various models, accuracy and precision were calculated for the multi-class classification problem on the validation set (the chosen class was selected by maximizing the probability). The results of the different models, compared to various intuitive baselines for route recommendation, are shown below:<br/>
+To asses the performance of the various models, the average accuracy and precision were calculated for the multi-class classification problem on the validation set (the predicted class was selected by maximizing the probability). The results of the different models, compared to various intuitive baselines for route recommendation, are shown below:<br/>
 
 <img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/EvalMetrics_Acc_Prec.png" width=65% height=65%><br/>
 
