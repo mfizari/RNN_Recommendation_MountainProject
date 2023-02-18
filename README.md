@@ -43,10 +43,6 @@ After this, the rating features, `rotuetype`, and `route_id` were tokenized and 
 #### Model<br/>
 To avoid the vanishing gradient problem that can occur when dealing with long sequence, LSTM layers should be used in an RNN model. However, training with LSTMs can be very computationally expensive. Here, I decided to use NVIDIA CUDA Deep Neural Network library (cuDNN), which contains an extremely optimized LSTM layer implementation for GPU-accelerated training (`tf.compat.v1.keras.layers.CuDNNLSTM` in TensorFlow). However, this implementation does not support masking, which together with padding would allow variable sequence lengths. As a result, I started off by choosing a fixed sequence length (`max_sen_len`) of 50 ticks and restricted the dataset to only include the last 50 ticks of users with at least 50 ticks in their profile. This number was chosen to minimize the amount of user profiles not included in the dataset while maximizing the time-span of which ticks are considered. <br/>
 
-The final architecture of the model is shown below:<br/>
-
-<img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/Arc.png" width=50% height=50%>
-
 To asses the importance of the various features, 3 different models were trained on 90% of the training dataset, with 10% left for validation. These models included 3 sets of features: `route_id` only, `route_id` and `ndays`, and all features listed above. Training was done on Paperspace Gradient notebooks. <br/>
 
 
