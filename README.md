@@ -45,7 +45,7 @@ To avoid the vanishing gradient problem that can occur when dealing with long se
 
 The final architecture of the model is shown below:<br/>
 
-<img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/Arc.png" width=70% height=70%>
+<img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/Arc.png" width=50% height=50%>
 
 To asses the importance of the various features, 3 different models were trained on 90% of the training dataset, with 10% left for validation. These models included 3 sets of features: `route_id` only, `route_id` and `ndays`, and all features listed above. Training was done on Paperspace Gradient notebooks. <br/>
 
