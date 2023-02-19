@@ -47,7 +47,7 @@ To asses the importance of the various features, 3 different models were trained
 
 
 #### Evaluation<br/>
-To asses the performance of the various models, the average accuracy and precision were calculated for the multi-class classification problem on the validation set (the predicted class was selected by maximizing the probability). The results of the different models, compared to various intuitive baselines for route recommendation, are shown below:<br/>
+To asses the performance of the various models, the accuracy and average precision were calculated for the multi-class classification problem on the validation set (the predicted class was selected by maximizing the probability). The results of the different models, compared to various intuitive baselines for route recommendation, are shown below:<br/>
 
 <img src="https://github.com/mfizari/RNN_Recommendation_MountainProject/blob/main/Data/EvalMetrics.png" width=45% height=45%><br/>
 
@@ -55,7 +55,7 @@ Overall, the RNN models vastly outperform the baselines. Interestingly, adding t
 
 
 #### Future work
-Since masking is not allowed in the cuDNN implementation of LSTM layers, we must use a fixed sequence length for inferences. This means that we cannot make predictions for users with fewer ticks that `max_sen_len`. To overcome this, we could use our currently trained model to extrpolate "past" ticks to fill in the sequence. Additionally, since we expect there to be significant seasonality in tick logs, we might want to adjust the truncation method to capture `route_id` sequences that span a longer time period, or use a larger value of `max_sen_len`. The later could be accomplished again by extrpolating past ticks for users with our current model. 
+First, it seems important to compare our model to other more sopSince masking is not allowed in the cuDNN implementation of LSTM layers, we must use a fixed sequence length for inferences. This means that we cannot make predictions for users with fewer ticks that `max_sen_len`. To overcome this, we could use our currently trained model to extrpolate "past" ticks to fill in the sequence. Additionally, since we expect there to be significant seasonality in tick logs, we might want to adjust the truncation method to capture `route_id` sequences that span a longer time period, or use a larger value of `max_sen_len`. The later could be accomplished again by extrpolating past ticks for users with our current model. 
 
 
 
