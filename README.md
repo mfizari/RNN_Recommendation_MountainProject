@@ -55,7 +55,7 @@ Overall, the RNN models vastly outperform the baselines. Interestingly, adding t
 
 
 #### Future work
-First, it seems important to compare our model to other more sopSince masking is not allowed in the cuDNN implementation of LSTM layers, we must use a fixed sequence length for inferences. This means that we cannot make predictions for users with fewer ticks that `max_sen_len`. To overcome this, we could use our currently trained model to extrpolate "past" ticks to fill in the sequence. Additionally, since we expect there to be significant seasonality in tick logs, we might want to adjust the truncation method to capture `route_id` sequences that span a longer time period, or use a larger value of `max_sen_len`. The later could be accomplished again by extrpolating past ticks for users with our current model. 
+Since masking is not allowed in the cuDNN implementation of LSTM layers, we must use a fixed sequence length for inferences. This means that we cannot make predictions for users with fewer ticks that `max_sen_len`. To overcome this, we could use our currently trained model to extrpolate "past" ticks to fill in the sequence. Additionally, since we expect there to be significant seasonality in tick logs, we might want to adjust the truncation method to capture `route_id` sequences that span a longer time period, or use a larger value of `max_sen_len`. The later could be accomplished again by extrpolating past ticks for users with our current model. 
 
 
 
